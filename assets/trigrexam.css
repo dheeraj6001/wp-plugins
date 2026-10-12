@@ -1,0 +1,316 @@
+/*
+ * The styles of the TrigrExam plugin. WordPress loads the file on every page of the site and, in the admin,
+ * on the pages of the plugin. The styles of the shortcodes go at the end of the file.
+ */
+
+/* Settings: the price of the plugin, as a card with the price in a tag on its right. */
+
+.trigrexam-price {
+    box-sizing: border-box;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin: 18px 0 10px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(16, 24, 40, .08);
+}
+
+.trigrexam-price-info {
+    flex: 1 1 260px;
+    padding: 22px 26px;
+}
+
+.trigrexam-price-label {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #e7f1fb;
+    border-radius: 999px;
+    color: #135e96;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.trigrexam-price-name {
+    margin-top: 10px;
+    color: #1d2327;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.trigrexam-price-tag {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: baseline;
+    align-self: stretch;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 22px 28px;
+    white-space: nowrap;
+    background: linear-gradient(135deg, #2271b1 0%, #1b4f9c 100%);
+    color: #fff;
+}
+
+.trigrexam-price-currency {
+    align-self: flex-start;
+    margin: 6px 4px 0 0;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.trigrexam-price-amount {
+    font-size: 54px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    line-height: 1;
+}
+
+/* Beside the amount, on its line. */
+.trigrexam-price-period {
+    margin-left: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    opacity: .9;
+}
+
+/* On a narrow screen the tag goes under the name, over the whole width. */
+@media (max-width: 600px) {
+    .trigrexam-price-tag {
+        flex: 1 1 100%;
+    }
+}
+
+/* A list of links, like TrigrExam > Announcements: what can be added on the left, the list on the right. */
+
+.trigrexam-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 16px;
+}
+
+.trigrexam-add {
+    flex: 0 0 300px;
+    max-width: 100%;
+}
+
+.trigrexam-list {
+    flex: 1 1 400px;
+    max-width: 700px;
+}
+
+.trigrexam-box {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    margin-bottom: 16px;
+}
+
+.trigrexam-box h2 {
+    margin: 0;
+    padding: 10px 12px;
+    font-size: 14px;
+    border-bottom: 1px solid #c3c4c7;
+}
+
+.trigrexam-box-inside {
+    padding: 12px;
+}
+
+.trigrexam-pages {
+    max-height: 240px;
+    overflow: auto;
+    margin: 0 0 12px;
+    padding: 8px;
+    border: 1px solid #dcdcde;
+}
+
+.trigrexam-pages li {
+    margin: 0 0 6px;
+}
+
+.trigrexam-items {
+    margin: 0;
+    min-height: 20px;
+}
+
+.trigrexam-item {
+    margin: 0 0 8px;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+}
+
+.trigrexam-item-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: #f6f7f7;
+    cursor: move;
+}
+
+.trigrexam-item-title {
+    flex: 1;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.trigrexam-item-type {
+    color: #646970;
+    white-space: nowrap;
+}
+
+.trigrexam-item-settings {
+    padding: 4px 12px 8px;
+    border-top: 1px solid #c3c4c7;
+}
+
+.trigrexam-item-page .trigrexam-item-url, .trigrexam-item-custom .trigrexam-item-original {
+    display: none;
+}
+
+.trigrexam-item-missing {
+    display: block;
+    color: #b32d2e;
+}
+
+.trigrexam-item-placeholder {
+    margin: 0 0 8px;
+    height: 40px;
+    border: 1px dashed #8c8f94;
+}
+
+.trigrexam-empty {
+    color: #646970;
+}
+
+.trigrexam-items:not(:empty) + .trigrexam-empty {
+    display: none;
+}
+
+/* Enquiries: one that is opened is not bold any more. */
+
+.row-title.trigrexam-enquiry-read {
+    font-weight: 400;
+}
+
+
+/* ---------- The site: the styles of the shortcodes ---------- */
+
+/* The "Quick Enquiry" button, fixed at the bottom of the page, and its popup, which is closed until the
+   button is clicked. */
+
+.open-button {
+    position: fixed;
+    bottom: 0;
+    left: 20px;
+    z-index: 9999;
+    padding: 8px 10px;
+    background-color: #ed3833;
+    border: none;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.open-button:hover {
+    background-color: #952c2d;
+}
+
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 244px;
+    right: 2px;
+    bottom: 0;
+    z-index: 9;
+    box-sizing: border-box;
+    width: auto;
+    max-width: 350px;
+    max-height: 627px;
+    padding: 0 25px;
+    overflow: hidden;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 3px solid #f1f1f1;
+}
+
+.form-popup .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 23px;
+    height: 23px;
+    background: #f44336;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 22px;
+    opacity: 1;
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .open-button {
+        margin-top: -220px;
+    }
+
+    .form-popup {
+        top: 184px;
+    }
+}
+
+/* The enquiry form, in the popup and in a page. */
+
+.wpcf7-form .enquiry {
+    border-bottom: 1px solid;
+    border-radius: 6px;
+    color: #9a0404;
+}
+
+.wpcf7-form input[type="text"],
+.wpcf7-form input[type="email"],
+.wpcf7-form textarea {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.wpcf7-form .wpcf7-textarea {
+    height: 40px;
+}
+
+.wpcf7-form .wpcf7-not-valid-tip {
+    display: block;
+    color: #dc3232;
+    font-size: 13px;
+}
+
+.wpcf7-form .wpcf7-response-output {
+    margin: 10px 0;
+    padding: 8px 12px;
+    border: 2px solid #dc3232;
+}
+
+.wpcf7-form .wpcf7-response-output.wpcf7-mail-sent-ok {
+    border-color: #46b450;
+}
+
+/* The scrolling announcements: the "new" mark in front of each one. */
+
+.newb {
+    display: inline-block;
+    width: 39px;
+    height: 17px;
+    background: url(https://careerendeavour.com/wp-content/uploads/2016/03/new.gif) no-repeat;
+}

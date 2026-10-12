@@ -1,0 +1,8 @@
+# The styles and the script of the plugin are opened by the browser, unlike the rest of the plugin.
+<IfModule mod_authz_core.c>
+    Require all granted
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Allow from all
+</IfModule>
