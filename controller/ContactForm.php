@@ -246,9 +246,10 @@ class TrigrexamContactForm extends TrigrexamBaseClass {
         ));
     }
 
-    // Position 0 puts "Enquiries" first in the "TrigrExam" menu.
+    // Position 1 puts "Enquiries" in the "TrigrExam" menu just below "Dashboard", which has to stay first:
+    // a click on the menu opens its first page.
     public function add_admin_page(){
-        add_submenu_page('trigrexam', 'Enquiries', 'Enquiries', 'manage_options', self::PAGE, array($this, 'admin_page'), 0);
+        add_submenu_page('trigrexam', 'Enquiries', 'Enquiries', 'manage_options', self::PAGE, array($this, 'admin_page'), 1);
     }
 
     // The list of the enquiries, newest first, or one enquiry when its id is in the address.

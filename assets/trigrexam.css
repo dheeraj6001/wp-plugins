@@ -3,6 +3,55 @@
  * on the pages of the plugin. The styles of the shortcodes go at the end of the file.
  */
 
+/* Dashboard: the pages of the plugin as cards, as many beside each other as the screen has room for. */
+
+.trigrexam-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.trigrexam-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 130px;
+    padding: 20px 16px;
+    box-sizing: border-box;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(16, 24, 40, .06);
+    color: #1d2327;
+    text-align: center;
+    text-decoration: none;
+    transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+
+.trigrexam-card:hover,
+.trigrexam-card:focus {
+    border-color: #2271b1;
+    box-shadow: 0 6px 18px rgba(16, 24, 40, .12);
+    color: #2271b1;
+    transform: translateY(-2px);
+}
+
+.trigrexam-card-icon.dashicons {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
+    color: #2271b1;
+    font-size: 40px;
+}
+
+.trigrexam-card-title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
 /* Settings: the price of the plugin, as a card with the price in a tag on its right. */
 
 .trigrexam-price {

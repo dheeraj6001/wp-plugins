@@ -270,9 +270,9 @@ abstract class TrigrexamBaseClass {
         return $links;
     }
 
-    // The positions put the pages below "Enquiries" and above "Settings".
+    // The positions put the pages below "Dashboard" and "Enquiries"; "Settings" is added after them.
     public function add_list_pages(){
-        $position = 1;
+        $position = 2;
         foreach($this->lists() as $key => $list){
             $hook = add_submenu_page('trigrexam', $list['title'], $list['title'], 'manage_options', $this->list_page($key), function() use ($key){
                 $this->list_admin_page($key);

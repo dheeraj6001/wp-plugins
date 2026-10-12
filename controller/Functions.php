@@ -4,17 +4,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * The controller of the plugin itself: the "TrigrExam" menu of the admin and its settings page,
+ * The controller of the plugin itself: the "TrigrExam" menu of the admin, its dashboard and its settings page,
  * and the custom CSS and JavaScript of the settings, which it puts in the pages of the site.
  * The enquiries and the lists of links are in their own controllers and add their pages to this menu.
  */
 class TrigrexamFunctions extends TrigrexamBaseClass {
 
+    // The admin page of the settings. The dashboard has the slug of the menu itself, "trigrexam".
+    const SETTINGS_PAGE = 'trigrexam-settings';
+
     // Connects the menu and the settings to WordPress.
     public function register(){
         add_action('admin_init', array($this, 'register_settings'));
-        // The enquiries and the lists add their pages to the menu after it, at 12, above "Settings".
+        // The enquiries and the lists add their pages to the menu after it, at 12, and "Settings" comes last, at 13.
         add_action('admin_menu', array($this, 'add_admin_menu'), 11);
+        add_action('admin_menu', array($this, 'add_settings_page'), 13);
+        add_action('admin_head', array($this, 'hide_submenu'));
         add_filter('plugin_action_links_'.plugin_basename(trigrexam_plugin_dir.'trigrexam.php'), array($this, 'settings_link'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_style'));
         // Late, so the styles of the plugin come after the ones of the theme and are not overruled by them.
@@ -32,11 +37,50 @@ class TrigrexamFunctions extends TrigrexamBaseClass {
         ));
     }
 
-    // The "TrigrExam" menu of the admin, with "Settings" in it.
+    // The "TrigrExam" menu of the admin. A click on it opens its first page, which is the dashboard.
     public function add_admin_menu(){
         // 59.5 puts it just above "Appearance", which is at 60.
-        add_menu_page('TrigrExam', 'TrigrExam', 'manage_options', 'trigrexam', array($this, 'settings_page'), 'dashicons-welcome-learn-more', 59.5);
-        add_submenu_page('trigrexam', 'TrigrExam Settings', 'Settings', 'manage_options', 'trigrexam');
+        add_menu_page('TrigrExam', 'TrigrExam', 'manage_options', 'trigrexam', array($this, 'dashboard_page'), 'dashicons-welcome-learn-more', 59.5);
+        add_submenu_page('trigrexam', 'TrigrExam', 'Dashboard', 'manage_options', 'trigrexam');
+    }
+
+    public function add_settings_page(){
+        add_submenu_page('trigrexam', 'TrigrExam Settings', 'Settings', 'manage_options', self::SETTINGS_PAGE, array($this, 'settings_page'));
+    }
+
+    // The admin menu shows "TrigrExam" only, without its pages under it: the cards of the dashboard open them.
+    // The pages stay in the menu of WordPress, which is what lets them open and keeps "TrigrExam" marked on them,
+    // so they are hidden with a style. It is on every page of the admin, where the styles of the plugin are not.
+    public function hide_submenu(){
+        echo '<style id="trigrexam-hide-submenu">#adminmenu #toplevel_page_trigrexam .wp-submenu{display:none}</style>'."\n";
+    }
+
+    // The icon of the card of a page on the dashboard: slug of the page => dashicon. Another page gets the one of a list.
+    private static $card_icons = array(
+        'trigrexam-enquiries' => 'dashicons-email-alt',
+        self::SETTINGS_PAGE => 'dashicons-admin-settings',
+    );
+
+    // The dashboard: every page of the "TrigrExam" menu as a card, in the order of the menu. A page that is
+    // added to the menu later, like a new list, gets its card without a change here.
+    public function dashboard_page(){
+        if(!current_user_can('manage_options')){
+            return;
+        }
+        global $submenu;
+        $cards = array();
+        // Each item of the menu: 0 is its title, 1 the capability it needs, 2 its slug.
+        foreach(isset($submenu['trigrexam']) ? $submenu['trigrexam'] : array() as $item){
+            if($item[2] === 'trigrexam' || !current_user_can($item[1])){
+                continue;
+            }
+            $cards[] = array(
+                'title' => wp_strip_all_tags($item[0]),
+                'url' => add_query_arg('page', $item[2], admin_url('admin.php')),
+                'icon' => isset(self::$card_icons[$item[2]]) ? self::$card_icons[$item[2]] : 'dashicons-list-view',
+            );
+        }
+        echo $this->render('admin/dashboard', array('cards' => $cards));
     }
 
     // The styles of the plugin, in the admin on its own pages only, which all have "trigrexam" in their hook.
@@ -55,7 +99,7 @@ class TrigrexamFunctions extends TrigrexamBaseClass {
 
     // The "Settings" link in the row of the plugin on the Plugins page.
     public function settings_link($links){
-        array_unshift($links, '<a href="'.esc_url(admin_url('admin.php?page=trigrexam')).'">Settings</a>');
+        array_unshift($links, '<a href="'.esc_url(admin_url('admin.php?page='.self::SETTINGS_PAGE)).'">Settings</a>');
         return $links;
     }
 
