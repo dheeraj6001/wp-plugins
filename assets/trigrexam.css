@@ -3,13 +3,25 @@
  * on the pages of the plugin. The styles of the shortcodes go at the end of the file.
  */
 
-/* Dashboard: the pages of the plugin as cards, as many beside each other as the screen has room for. */
+/* Dashboard: the pages of the plugin as cards, as many beside each other as the screen has room for,
+   in sections with the part of the site as their heading. */
+
+.trigrexam-section {
+    margin: 26px 0 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #dcdcde;
+    color: #50575e;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
 
 .trigrexam-cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-    margin-top: 18px;
+    gap: 12px;
+    margin-top: 14px;
 }
 
 .trigrexam-card {
@@ -17,12 +29,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 130px;
-    padding: 20px 16px;
+    min-height: 88px;
+    padding: 12px 14px;
     box-sizing: border-box;
     background: #fff;
     border: 1px solid #dcdcde;
-    border-radius: 12px;
+    border-radius: 10px;
     box-shadow: 0 2px 6px rgba(16, 24, 40, .06);
     color: #1d2327;
     text-align: center;
@@ -39,16 +51,24 @@
 }
 
 .trigrexam-card-icon.dashicons {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 12px;
+    width: 26px;
+    height: 26px;
+    margin-bottom: 6px;
     color: #2271b1;
-    font-size: 40px;
+    font-size: 26px;
 }
 
 .trigrexam-card-title {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
+    line-height: 1.3;
+}
+
+/* Where the page is used, under its title. It keeps its colour when the card is hovered. */
+.trigrexam-card-subtitle {
+    margin-top: 3px;
+    color: #646970;
+    font-size: 12px;
     line-height: 1.3;
 }
 
@@ -362,4 +382,239 @@
     width: 39px;
     height: 17px;
     background: url(https://careerendeavour.com/wp-content/uploads/2016/03/new.gif) no-repeat;
+}
+
+/* The components a list of links is shown as: [announcement view="list"], "table", "card" and "toggle". */
+
+.trigrexam-view-list {
+    margin: 0 0 16px;
+    padding-left: 20px;
+}
+
+.trigrexam-view-list li {
+    margin: 0 0 6px;
+}
+
+.trigrexam-view-tables {
+    overflow-x: auto;
+}
+
+.trigrexam-view-table {
+    width: 100%;
+    margin: 0 0 20px;
+    border-collapse: collapse;
+}
+
+.trigrexam-view-table caption {
+    padding: 0 0 8px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.trigrexam-view-table th,
+.trigrexam-view-table td {
+    padding: 10px 12px;
+    border: 1px solid #dcdcde;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.trigrexam-view-table th {
+    background: #f6f7f7;
+    font-weight: 600;
+}
+
+.trigrexam-view-table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+/* The number and the button are as narrow as what is in them; the title has the rest. */
+.trigrexam-view-table th:first-child,
+.trigrexam-view-table td:first-child,
+.trigrexam-view-table th:last-child,
+.trigrexam-view-table td:last-child {
+    width: 1%;
+    white-space: nowrap;
+}
+
+.trigrexam-view-button {
+    display: inline-block;
+    padding: 5px 14px;
+    background: #ed3833;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.trigrexam-view-button:hover,
+.trigrexam-view-button:focus {
+    background: #952c2d;
+    color: #fff;
+}
+
+/* As many cards beside each other as the page has room for. */
+.trigrexam-view-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 0 0 20px;
+}
+
+.trigrexam-view-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 90px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(16, 24, 40, .06);
+    color: #1d2327;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    text-decoration: none;
+    transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+
+a.trigrexam-view-card:hover,
+a.trigrexam-view-card:focus {
+    border-color: #ed3833;
+    box-shadow: 0 6px 18px rgba(16, 24, 40, .12);
+    color: #ed3833;
+    transform: translateY(-2px);
+}
+
+.trigrexam-view-toggle {
+    margin: 0 0 8px;
+    border: 1px solid #dcdcde;
+    border-radius: 6px;
+}
+
+.trigrexam-view-toggle summary {
+    padding: 12px 14px;
+    background: #f6f7f7;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.trigrexam-view-toggle[open] summary {
+    border-bottom: 1px solid #dcdcde;
+    border-radius: 6px 6px 0 0;
+}
+
+.trigrexam-view-toggle ul {
+    margin: 0;
+    padding: 12px 14px 12px 34px;
+}
+
+.trigrexam-view-toggle li {
+    margin: 0 0 6px;
+}
+
+.cardview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+    align-items: stretch;
+}
+
+.cardview-grid .trigrexam-view-column {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    float: none;
+    box-sizing: border-box;
+}
+
+.cardview-grid .widget {
+    height: 100%;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cardview-grid .widget:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+.cardview-grid .subtitle {
+    margin: 0 0 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e5e7eb;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 700;
+    color: #222;
+}
+
+.cardview-grid .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cardview-grid .menu-item {
+    margin: 0;
+    padding: 0;
+}
+
+.cardview-grid .menu-item a {
+    display: block;
+    padding: 9px 0;
+    color: #444;
+    text-decoration: none;
+    line-height: 1.5;
+    border-bottom: 1px solid #f0f0f0;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.cardview-grid .menu-item:last-child a {
+    border-bottom: none;
+}
+
+.cardview-grid .menu-item a:hover {
+    color: #0073aa;
+    padding-left: 6px;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 991px) {
+    .cardview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 600px) {
+    .cardview-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .cardview-grid .widget {
+        padding: 18px;
+    }
+}
+.cardview-grid .subtitle{
+    font-size: 16px !important;
+    color: #9c211e;
+    font-weight: 600;
+    border-bottom: 2px solid #9c211e;
+    padding: 10px 12px;
+    margin: 0;
+    background-color: #f2f2f2;
 }

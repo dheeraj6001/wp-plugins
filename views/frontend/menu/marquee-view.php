@@ -1,6 +1,6 @@
 <?php
 /**
- * View: scrolling announcements.
+ * View: the links as a marquee, one scrolling line, for a shortcode like [announcement view="marquee"].
  *
  * @var array $links The announcements list. Each one: title, url. The url is '' for an announcement without a link.
  */

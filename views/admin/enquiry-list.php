@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="wrap">
   <h1>Enquiries</h1>
+  <p><a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=trigrexam' ) ); ?>">&larr; Back</a></p>
 <?php if ( $deleted ) : ?>
   <div class="notice notice-success is-dismissible"><p>The enquiry is deleted.</p></div>
 <?php endif; ?>

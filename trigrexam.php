@@ -14,16 +14,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define('trigrexam_plugin_dir', plugin_dir_path(__FILE__));
 
-require_once(trigrexam_plugin_dir . 'controller/Core.php');
-require_once(trigrexam_plugin_dir . 'controller/Functions.php');
-require_once(trigrexam_plugin_dir . 'controller/ContactForm.php');
-require_once(trigrexam_plugin_dir . 'controller/Menu.php');
+require_once(trigrexam_plugin_dir . 'app/Model.php');
+require_once(trigrexam_plugin_dir . 'app/Controller.php');
+require_once(trigrexam_plugin_dir . 'app/Frontend.php');
 
-$TrigrexamPlugin = new TrigrexamFunctions();
-$TrigrexamPlugin->register();
+// What the site uses. The admin has it too: it shows what is wrong with the shortcodes, and a form of the
+// site is posted to admin-ajax.php.
+$TrigrexamFrontend = new TrigrexamFrontend();
+$TrigrexamFrontend->register();
 
-$TrigrexamContactForm = new TrigrexamContactForm();
-$TrigrexamContactForm->register();
-
-$TrigrexamMenu = new TrigrexamMenu();
-$TrigrexamMenu->register();
+// What the admin uses. A page of the site does not load it.
+if(is_admin()){
+    require_once(trigrexam_plugin_dir . 'app/Admin.php');
+    $TrigrexamAdmin = new TrigrexamAdmin($TrigrexamFrontend);
+    $TrigrexamAdmin->register();
+}

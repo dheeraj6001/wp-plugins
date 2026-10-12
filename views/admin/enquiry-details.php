@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="wrap">
   <h1>Enquiry</h1>
-  <p><a href="<?php echo esc_url( $back_url ); ?>">&larr; All enquiries</a></p>
+  <p><a class="button" href="<?php echo esc_url( $back_url ); ?>">&larr; All enquiries</a></p>
   <table class="form-table" role="presentation">
     <tr><th scope="row">Name</th><td><?php echo esc_html( $enquiry['name'] ); ?></td></tr>
     <tr><th scope="row">Phone</th><td><?php echo esc_html( $enquiry['phone'] ); ?></td></tr>

@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="wrap">
   <h1>TrigrExam Settings</h1>
+  <p><a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=trigrexam' ) ); ?>">&larr; Back</a></p>
 <?php settings_errors(); ?>
   <div class="trigrexam-price">
     <div class="trigrexam-price-info">

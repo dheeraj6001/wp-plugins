@@ -18,10 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="wrap">
   <h1><?php echo esc_html( $title ); ?></h1>
+  <p><a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=trigrexam' ) ); ?>">&larr; Back</a></p>
 <?php if ( $saved ) : ?>
   <div class="notice notice-success is-dismissible"><p>The list is saved.</p></div>
 <?php endif; ?>
   <p>The <code>[<?php echo esc_html( $shortcode ); ?>]</code> shortcode shows these links, in this order. Add a page or a custom link, drag the items into order, then save.</p>
+  <p>To show them as another component, name it in the shortcode: <code>[<?php echo esc_html( $shortcode ); ?> view="table"]</code>. The components are <code>marquee</code> (one scrolling line), <code>list</code>, <code>lists</code> (a heading with the links under it), <code>table</code>, <code>card</code>, <code>toggle</code> and <code>custom-layout</code> (the columns of the footer).</p>
 
   <div class="trigrexam-menu">
     <div class="trigrexam-add">
